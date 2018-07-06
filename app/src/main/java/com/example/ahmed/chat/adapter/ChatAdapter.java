@@ -1,17 +1,16 @@
-package com.example.ahmed.chat;
+package com.example.ahmed.chat.adapter;
 
 import android.content.Context;
-import android.drm.DrmStore;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.LayoutDirection;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.ahmed.chat.model.Message;
+import com.example.ahmed.chat.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;

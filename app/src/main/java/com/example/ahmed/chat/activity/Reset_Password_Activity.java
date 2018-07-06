@@ -1,4 +1,4 @@
-package com.example.ahmed.chat;
+package com.example.ahmed.chat.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.ahmed.chat.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +38,7 @@ public class Reset_Password_Activity extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
                 String email = emailET.getText().toString().trim();
+//________________________________________________________________________________________________________________________________________________________
 
                 FirebaseAuth.getInstance()
                         .sendPasswordResetEmail(email)
@@ -47,7 +49,8 @@ public class Reset_Password_Activity extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
                                     Toast.makeText(Reset_Password_Activity.this, "Check Your Email!", Toast.LENGTH_SHORT).show();
                                     finish();
-                                }else {
+                                }
+                                else {
                                     progressBar.setVisibility(View.GONE);
                                     Toast.makeText(Reset_Password_Activity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 

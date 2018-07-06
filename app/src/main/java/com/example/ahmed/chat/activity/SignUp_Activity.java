@@ -1,4 +1,4 @@
-package com.example.ahmed.chat;
+package com.example.ahmed.chat.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ahmed.chat.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -32,25 +33,29 @@ public class SignUp_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_);
         ButterKnife.bind(SignUp_Activity.this);
 
+//____________________________________________________________________________________________________________________________________________________________________________________
+
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = emailET.getText().toString().trim();
                 String password = passwordET.getText().toString();
+
                 FirebaseAuth.getInstance()
                         .createUserWithEmailAndPassword(email, password) // method is used for Write Email And Password ---> for Save (Email And Password) in Database(Firebase).
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() { // method is used for check SingnUp (Success or fail).
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                if (task.isSuccessful()) { // (lw 3malet el save naga7t) aza 7asl Save LL Email & Passward fe Database(Firebase)--> b4akl sa7eh
+                                if (task.isSuccessful()) { // (lw 3amalyt el save naga7t) if 7asl Save LL Email & Passward fe Database(Firebase)--> b4akl sa7eh
                                     // w 5las tam ta5zenhom 5laaas ro7 LL MainActivity
                                     Toast.makeText(SignUp_Activity.this, "Success Save Account in Database", Toast.LENGTH_SHORT).show();
 
                                     Intent intent = new Intent(SignUp_Activity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
-                                } else {
+                                }
+                                else {
                                     Toast.makeText(SignUp_Activity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
 
