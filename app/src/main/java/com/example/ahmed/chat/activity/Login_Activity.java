@@ -64,6 +64,8 @@ public class Login_Activity extends AppCompatActivity {
                 String email = emailET.getText().toString().trim();
                 String passward = passwordET.getText().toString().trim();
 
+
+
                 FirebaseAuth.getInstance()
                         .signInWithEmailAndPassword(email,passward)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {

@@ -12,33 +12,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/email_ET"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
-            android:hint="Email "
             android:layout_marginTop="25dp"
-            android:drawableStart="@drawable/email"
-            android:background="@drawable/edit_text_shape"
-            android:inputType="textEmailAddress"
-            android:padding="10dp"
-            android:drawableLeft="@drawable/email" />
+            app:hintEnabled="false">
 
-        <EditText
-            android:id="@+id/password_ET"
+            <EditText
+                android:id="@+id/email_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:hint="Email "
+                android:drawableStart="@drawable/email"
+                android:background="@drawable/edit_text_shape"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/email" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="password"
-            android:drawablePadding="10dp"
-            android:drawableStart="@drawable/passward"
-            android:background="@drawable/edit_text_shape"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:drawableLeft="@drawable/passward" />
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#000"
+            app:hintEnabled="false">
+
+            <EditText
+                android:id="@+id/password_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="password"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/passward"
+                android:background="@drawable/edit_text_shape"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/passward"
+                />
+
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/login_btn"
