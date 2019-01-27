@@ -18,10 +18,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by ahmed on 14/4/2018.
- */
-
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatHolder> {
 
     private Context context;
@@ -31,19 +27,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatHolder> {
         this.context = context;
         this.messageList = messageList;
     }
-
     @Override
     public ChatHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View row = LayoutInflater.from(context).inflate(R.layout.row_message, parent, false);
         ChatHolder holder = new ChatHolder(row);
         return holder;
     }
-
     @Override
     public void onBindViewHolder(ChatHolder holder, int position) {
-
         Message message = messageList.get(position);
-
 
         if (message.getEmail().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
             holder.username.setTextColor(Color.RED);
@@ -54,16 +46,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatHolder> {
             holder.username.setGravity(Gravity.START);
             holder.message.setGravity(Gravity.START);
         }
-
         holder.username.setText(message.getEmail());
         holder.message.setText(message.getMessage());
     }
-
     @Override
     public int getItemCount() {
         return messageList.size();
     }
-
     public class ChatHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.username_TV)
@@ -76,5 +65,4 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatHolder> {
             ButterKnife.bind(this, itemView);
         }
     }
-
 }
