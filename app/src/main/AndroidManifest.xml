@@ -31,16 +31,21 @@
         <activity
             android:name=".activity.Reset_Password_Activity"
             android:parentActivityName=".activity.Login_Activity" />
+
         <activity
             android:name=".activity.AccountSettingsActivity"
             android:parentActivityName=".activity.HomeActivity" />
+
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
+
         <activity
             android:name=".activity.StatusActivity"
             android:parentActivityName=".activity.AccountSettingsActivity" />
-        <activity android:name=".activity.AllUsersActivity"></activity>
+
+        <activity android:name=".activity.AllUsersActivity"
+            android:parentActivityName=".activity.HomeActivity"/>
     </application>
 
 </manifest>

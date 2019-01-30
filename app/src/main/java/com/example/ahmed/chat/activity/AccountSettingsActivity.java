@@ -63,6 +63,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.Settings_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("AccountSettings");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
         String online_user_id = mAuth.getCurrentUser().getUid();
@@ -152,23 +153,5 @@ public class AccountSettingsActivity extends AppCompatActivity {
                 Exception error = result.getError();
             }
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.logout:
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(this, StartActivity.class));
-                finish();
-        }
-        return true;
     }
 }

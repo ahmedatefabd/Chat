@@ -6,6 +6,12 @@
         android:id="@+id/Account_Settings"
         android:title="Account Settings"
         app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/All_Users"
+        android:title="All Users"
+        app:showAsAction="never"/>
+
     <item
         android:id="@+id/logout"
         android:title="Logout"

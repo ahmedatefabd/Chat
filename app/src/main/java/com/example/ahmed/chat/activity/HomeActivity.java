@@ -104,6 +104,11 @@ public class HomeActivity extends AppCompatActivity {
 
             case R.id.Account_Settings:
                 startActivity(new Intent(this, AccountSettingsActivity.class));
+                break;
+
+            case R.id.All_Users:
+                startActivity(new Intent(this, AllUsersActivity.class));
+                break;
 
         }
         return true;
