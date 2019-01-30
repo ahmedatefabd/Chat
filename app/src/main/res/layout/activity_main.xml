@@ -7,6 +7,10 @@
     android:orientation="vertical"
     tools:context="com.example.ahmed.chat.activity.MainActivity">
 
+    <include
+        android:id="@+id/MyChat_Toolbar"
+        layout="@layout/app_bar_layout"/>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"

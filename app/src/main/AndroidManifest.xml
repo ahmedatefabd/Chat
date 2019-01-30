@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,16 +14,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.Login_Activity">
+        <activity android:name=".activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SignUp_Activity" />
-        <activity android:name=".activity.Reset_Password_Activity"></activity>
+        <activity android:name=".activity.HomeActivity" />
+        <activity
+            android:name=".activity.Login_Activity"
+            android:parentActivityName=".activity.StartActivity" />
+        <activity
+            android:name=".activity.SignUp_Activity"
+            android:parentActivityName=".activity.StartActivity" />
+        <activity
+            android:name=".activity.Reset_Password_Activity"
+            android:parentActivityName=".activity.Login_Activity" />
+        <activity
+            android:name=".activity.AccountSettingsActivity"
+            android:parentActivityName=".activity.HomeActivity" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name=".activity.StatusActivity"
+            android:parentActivityName=".activity.AccountSettingsActivity" />
+        <activity android:name=".activity.AllUsersActivity"></activity>
     </application>
 
 </manifest>

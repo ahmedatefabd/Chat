@@ -6,21 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#cfc7c7"
     tools:context="com.example.ahmed.chat.activity.SignUp_Activity">
+
+    <include
+        android:id="@+id/sign_Toolbar"
+        layout="@layout/app_bar_layout"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="25dp"
+        android:layout_marginTop="100dp"
         android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="userName"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/username"
+            android:background="@drawable/edit_text_shape"
+            android:inputType="text"
+            android:padding="10dp"
+            android:drawableLeft="@drawable/email" />
 
         <EditText
             android:id="@+id/email_ET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:layout_marginTop="60dp"
             android:drawablePadding="10dp"
+            android:layout_marginTop="25dp"
             android:drawableStart="@drawable/email"
             android:background="@drawable/edit_text_shape"
             android:inputType="textEmailAddress"
@@ -39,13 +56,6 @@
             android:inputType="textPassword"
             android:padding="10dp"
             android:drawableLeft="@drawable/passward" />
-
-        <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:layout_marginTop="24dp"-->
-        <!--android:background="@android:color/black" />-->
-
 
         <Button
             android:id="@+id/sign_up_btn"

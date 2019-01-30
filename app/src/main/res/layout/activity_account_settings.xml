@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context=".activity.AccountSettingsActivity">
+
+    <include
+        android:id="@+id/Settings_toolbar"
+        layout="@layout/app_bar_layout"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/user"
+        />
+
+    <TextView
+        android:id="@+id/username_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="UserName"
+        android:layout_marginTop="20dp"
+        android:textSize="22sp"
+        android:textColor="#000"
+        android:textColorHint="#000"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/statuse_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="User Profile Statuse"
+        android:layout_marginTop="20dp"
+        android:textSize="22sp"
+        android:textColor="#000"
+        android:textColorHint="#000"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/change_image_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn_shape"
+        android:text="CHANGE IMAGE"
+        android:textSize="18sp"
+        android:textColor="#fff"/>
+
+    <Button
+        android:id="@+id/change_statuse_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_shape"
+        android:text="CHANGE STATUSE"
+        android:textSize="18sp"
+        android:textColor="#fff"/>
+
+</LinearLayout>

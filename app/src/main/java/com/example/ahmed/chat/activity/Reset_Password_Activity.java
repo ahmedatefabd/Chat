@@ -3,6 +3,7 @@ package com.example.ahmed.chat.activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,11 +27,18 @@ public class Reset_Password_Activity extends AppCompatActivity {
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset__password_);
         ButterKnife.bind(this);
+
+        toolbar = findViewById(R.id.reset_Toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("ResetPassword");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override

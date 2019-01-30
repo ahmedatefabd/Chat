@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Chat</string>
     <string name="forget_passs"><u>Forget your password?</u></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="requests_fragment">REQUESTS fragment</string>
+    <string name="chats_fragment">CHATS fragment</string>
+    <string name="friends_fragment">FRINENDS fragment</string>
 </resources>

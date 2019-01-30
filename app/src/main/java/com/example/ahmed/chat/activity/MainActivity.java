@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.example.ahmed.chat.adapter.ChatAdapter;
 import com.example.ahmed.chat.model.Message;
 import com.example.ahmed.chat.R;
+import com.example.ahmed.chat.model.UserData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,10 +40,16 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.FloatingActionButton)
     android.support.design.widget.FloatingActionButton FloatingActionButton;
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = findViewById(R.id.MyChat_Toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("MyChat");
 
         ButterKnife.bind(MainActivity.this);
         FloatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -55,8 +63,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void SaveData() {
         Message message = new Message();
+        UserData userData = new UserData();
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         message.setEmail(email);
+        userData.setEmail(email);
         String mes = ET_Message.getText().toString() ;
         ET_Message.setText("");
         message.setMessage(mes);
@@ -112,10 +122,21 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(this, Login_Activity.class);
+                Intent intent = new Intent(this, StartActivity.class);
                 startActivity(intent);
                 finish();
+                break;
+
+            case R.id.Account_Settings:
+                startActivity(new Intent(this, AccountSettingsActivity.class));
+
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
