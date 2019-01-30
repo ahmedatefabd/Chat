@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ahmed.chat.R;
+import com.example.ahmed.chat.model.AllUsers;
 import com.example.ahmed.chat.utils.Constant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -53,6 +54,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private final static int Gallery_pick = 1;
     private StorageReference storageReference;
+    private AllUsers allUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("AccountSettings");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        allUsers = new AllUsers();
         mAuth = FirebaseAuth.getInstance();
         String online_user_id = mAuth.getCurrentUser().getUid();
         getDatabaseReference = FirebaseDatabase.getInstance().getReference().child(Constant.Extra.CHILD_USERS).child(online_user_id);
@@ -80,6 +83,10 @@ public class AccountSettingsActivity extends AppCompatActivity {
                 usernameTV.setText(name);
                 statuseTV.setText(statuse);
                 Picasso.get().load(image).placeholder(R.drawable.user).into(imageView);
+
+                allUsers.setUser_name(name);
+                allUsers.setUser_status(statuse);
+                allUsers.setUser_image(image);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -96,7 +103,6 @@ public class AccountSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String old_statuse = statuseTV.getText().toString().trim();
-
                 Intent intent = new Intent(AccountSettingsActivity.this, StatusActivity.class);
                 intent.putExtra(Constant.ExtraBranch.USER_STATUSE, old_statuse);
                 startActivity(intent);
