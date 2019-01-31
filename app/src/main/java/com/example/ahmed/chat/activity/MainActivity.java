@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.example.ahmed.chat.adapter.ChatAdapter;
 import com.example.ahmed.chat.model.Message;
 import com.example.ahmed.chat.R;
-import com.example.ahmed.chat.model.UserData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -63,10 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void SaveData() {
         Message message = new Message();
-        UserData userData = new UserData();
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         message.setEmail(email);
-        userData.setEmail(email);
         String mes = ET_Message.getText().toString() ;
         ET_Message.setText("");
         message.setMessage(mes);
