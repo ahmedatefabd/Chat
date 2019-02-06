@@ -1,9 +1,11 @@
 package com.example.ahmed.chat.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appizona.yehiahd.fastsave.FastSave;
 import com.example.ahmed.chat.R;
 import com.example.ahmed.chat.model.AllUsers;
 import com.example.ahmed.chat.utils.Constant;
@@ -55,6 +58,8 @@ public class AccountSettingsActivity extends AppCompatActivity {
     private final static int Gallery_pick = 1;
     private StorageReference storageReference;
     private AllUsers allUsers;
+    public static SharedPreferences sharedPreferences;
+    public static SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +71,9 @@ public class AccountSettingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("AccountSettings");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(AccountSettingsActivity.this);
+        editor = sharedPreferences.edit();
 
         allUsers = new AllUsers();
         mAuth = FirebaseAuth.getInstance();
@@ -84,9 +92,6 @@ public class AccountSettingsActivity extends AppCompatActivity {
                 statuseTV.setText(statuse);
                 Picasso.get().load(image).placeholder(R.drawable.user).into(imageView);
 
-                allUsers.setUser_name(name);
-                allUsers.setUser_status(statuse);
-                allUsers.setUser_image(image);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -140,7 +145,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
                             Toast.makeText(AccountSettingsActivity.this,
                                     "Saving your profile image to Firebase", Toast.LENGTH_SHORT).show();
 
-                            String downloadUrl = task.getResult().getDownloadUrl().toString();
+                            final String downloadUrl = task.getResult().getDownloadUrl().toString();
                             getDatabaseReference.child(Constant.ExtraBranch.USER_IMAGE).setValue(downloadUrl)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override

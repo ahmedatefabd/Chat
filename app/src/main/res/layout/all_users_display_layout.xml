@@ -36,6 +36,14 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 />
+            <TextView
+                android:id="@+id/IDUser_TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ID User"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

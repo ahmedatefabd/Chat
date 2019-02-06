@@ -70,8 +70,7 @@ public class MainActivity extends AppCompatActivity {
         String key = FirebaseDatabase.getInstance().getReference().child("Chat").push().getKey();
 
         FirebaseDatabase.getInstance().getReference().child("Chat")
-                .child(key)
-                .setValue( message )
+                .child(key).setValue( message )
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

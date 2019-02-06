@@ -4,6 +4,16 @@ public interface Constant {
 
     interface Extra{
         String CHILD_USERS = "Users";
+        String CHILD_MESSAGE = "Chat Message";
+        String CHILD_CALL_CENTER = "Call_Center";
+        String CHILD_CALL_CENTER_MESSAGE = "message";
+        String DATA_CLINT = "Users_Data";
+        String DATA_ADMAIN = "Admin Data";
+    }
+    interface SHARED{
+        String SHARED_NAME = "name";
+        String SHARED_STATUS = "status";
+        String SHARED_IMAGE = "image";
     }
 
     interface ExtraBranch{

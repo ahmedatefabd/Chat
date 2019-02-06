@@ -12,8 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.ahmed.chat.R;
-import com.example.ahmed.chat.fragment.REQUESTS;
-import com.example.ahmed.chat.fragment.FRINENDS;
+import com.example.ahmed.chat.fragment.AllUsersFragment;
 import com.example.ahmed.chat.fragment.CHATS;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -24,11 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-//    private int[] tabIcons = {
-//            R.drawable.favourite,
-//            R.drawable.call,
-//            R.drawable.contacts
-//    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,19 +38,12 @@ public class HomeActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-//        setupTabIcons();
     }
-//    private void setupTabIcons() {
-//        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
-//        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
-//        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
-//    }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new REQUESTS(), "REQUESTS");
+        adapter.addFragment(new AllUsersFragment(), "All Users");
         adapter.addFragment(new CHATS(), "CHATS");
-        adapter.addFragment(new FRINENDS(), "FRINENDS");
         viewPager.setAdapter(adapter);
     }
 
@@ -109,6 +97,10 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.All_Users:
                 startActivity(new Intent(this, AllUsersActivity.class));
                 break;
+
+//            case R.id.Call_Center:
+//                startActivity(new Intent(this, CallCenterActivity.class));
+//                break;
 
         }
         return true;

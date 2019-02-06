@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ClintUserActivity">
+
+    <include
+        android:id="@+id/clint_Toolbar"
+        layout="@layout/app_bar_layout"
+        />
+
+    <Button
+        android:id="@+id/Call_Center_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/btn_shape"
+        android:text="Call Center"
+        android:textSize="18sp"/>
+    <Button
+        android:id="@+id/Call_Center_Signup_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingHorizontal="60dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/btn_shape"
+        android:text="Sign Up"
+        android:textSize="18sp"/>
+
+</LinearLayout>

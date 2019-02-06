@@ -34,8 +34,8 @@ public class Login_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       if (FirebaseAuth.getInstance().getCurrentUser() != null ){
-           Intent intent = new Intent(Login_Activity.this , HomeActivity.class);
+       if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+           Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
            startActivity(intent);
            finish();
        }
@@ -56,7 +56,7 @@ public class Login_Activity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = emailET.getText().toString().trim();
+                final String email = emailET.getText().toString().trim();
                 String passward = passwordET.getText().toString().trim();
                 FirebaseAuth.getInstance()
                         .signInWithEmailAndPassword(email,passward)
@@ -65,9 +65,19 @@ public class Login_Activity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(Login_Activity.this, "Success Login Account", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
-                                    startActivity(intent);
-                                    finish();
+//                                    Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
+//                                    startActivity(intent);
+//                                    finish();
+                                    if (email.equals("atef0755@gmail.com")){
+                                        Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }else {
+                                        Intent intent = new Intent(Login_Activity.this, ClintUserActivity.class);
+                                        intent.putExtra("userID", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                        startActivity(intent);
+                                        finish();
+                                    }
                                 }
                                 else {
                                     Toast.makeText(Login_Activity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
