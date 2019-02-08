@@ -33,18 +33,11 @@ public class Login_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-       if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-           if (FirebaseAuth.getInstance().getCurrentUser().equals("atef0755@gmail.com")){
-               Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
-               startActivity(intent);
-               finish();
-           }else {
-               Intent intent = new Intent(Login_Activity.this, ClintUserActivity.class);
-               startActivity(intent);
-               finish();
-           }
-       }
+//       if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+//               Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
+//               startActivity(intent);
+//               finish();
+//       }
         setContentView(R.layout.activity_login_);
 
         ButterKnife.bind(Login_Activity.this);
@@ -52,6 +45,12 @@ public class Login_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Login");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,7 +69,6 @@ public class Login_Activity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(Login_Activity.this, "Success Login Account", Toast.LENGTH_SHORT).show();
                                     if (email.equals("atef0755@gmail.com")){
                                         Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
                                         startActivity(intent);
@@ -94,5 +92,10 @@ public class Login_Activity extends AppCompatActivity {
                 startActivity(new Intent(Login_Activity.this, Reset_Password_Activity.class));
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }

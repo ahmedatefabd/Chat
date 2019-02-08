@@ -50,6 +50,12 @@ public class SignUp_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("SignUp");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         call_center = new Chat_Call_Center();
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +80,6 @@ public class SignUp_Activity extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()){
-                                                        Toast.makeText(SignUp_Activity.this, "Success Save Account in Database", Toast.LENGTH_SHORT).show();
                                                         saveData();
                                                         callCenterBranch();
                                                         if (email.equals("atef0755@gmail.com")){
@@ -157,5 +162,10 @@ public class SignUp_Activity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }

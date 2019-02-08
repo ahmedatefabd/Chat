@@ -34,6 +34,12 @@ public class StartActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.StartToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Login & SignUp");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,5 +54,10 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(new Intent(StartActivity.this, SignUp_Activity.class));
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }

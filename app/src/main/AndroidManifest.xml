@@ -48,7 +48,7 @@
             android:name=".activity.MessageActivity"
             android:parentActivityName=".activity.AllUsersActivity" />
 
-        <activity android:name=".activity.ClintUserActivity"/>
+        <activity android:name=".activity.ClintUserActivity" />
     </application>
 
 </manifest>

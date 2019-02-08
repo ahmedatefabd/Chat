@@ -6,6 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.ahmed.chat.R;
 import com.example.ahmed.chat.utils.Constant;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,8 +19,6 @@ public class ClintUserActivity extends AppCompatActivity {
     Button CallCenterBtn;
     @BindView(R.id.Call_Center_Signup_btn)
     Button CallCenterSignupBtn;
-    @BindView(R.id.userid)
-    TextView userid;
     private Toolbar toolbar;
 
     @Override
@@ -52,12 +52,10 @@ public class ClintUserActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.clint_Toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Move to Call Center");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }

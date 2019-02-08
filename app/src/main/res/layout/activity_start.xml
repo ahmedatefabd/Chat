@@ -27,7 +27,9 @@
             android:text="login"
             android:background="@drawable/btn_shape"
             android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:textSize="18sp"
+            android:textColor="#fff"
+            android:padding="8dp"/>
 
         <Button
             android:id="@+id/Registration_btn"
@@ -37,6 +39,8 @@
             android:text="Registration"
             android:background="@drawable/btn_shape"
             android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:textColor="#fff"/>
     </LinearLayout>
 </LinearLayout>

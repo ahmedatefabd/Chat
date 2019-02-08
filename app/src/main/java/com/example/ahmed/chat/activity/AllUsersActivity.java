@@ -79,4 +79,9 @@ public class AllUsersActivity extends AppCompatActivity {
         allUserList.setLayoutManager(new LinearLayoutManager(this));
         allUserList.setAdapter(adapter);
     }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }

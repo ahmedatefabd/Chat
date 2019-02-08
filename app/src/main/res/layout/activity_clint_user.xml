@@ -13,34 +13,28 @@
         layout="@layout/app_bar_layout"
         />
 
-    <TextView
-        android:id="@+id/userid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="sdvvsdvsdvsdvsd"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:padding="18sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
-
     <Button
         android:id="@+id/Call_Center_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="150dp"
         android:background="@drawable/btn_shape"
         android:text="Call Center"
-        android:textSize="18sp"/>
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:textStyle="bold"/>
     <Button
         android:id="@+id/Call_Center_Signup_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingHorizontal="60dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/btn_shape"
-        android:text="Sign Up"
-        android:textSize="18sp"/>
+        android:text="Logout"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
 </LinearLayout>

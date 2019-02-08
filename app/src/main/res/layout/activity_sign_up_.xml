@@ -65,7 +65,9 @@
             android:text="Sign up"
             android:background="@drawable/btn_shape"
             android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:padding="8dp"/>
 
     </LinearLayout>
 
