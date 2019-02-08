@@ -1,7 +1,9 @@
 package com.example.ahmed.chat.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,15 +13,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ahmed.chat.R;
+import com.example.ahmed.chat.adapter.PrivateChatAdapter;
 import com.example.ahmed.chat.model.AllUsers;
+import com.example.ahmed.chat.model.ChatMessage;
 import com.example.ahmed.chat.model.Messagess;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,9 +46,15 @@ public class MessageActivity extends AppCompatActivity {
     @BindView(R.id.send_btn)
     ImageView sendBtn;
     private Toolbar toolbar;
-    private DatabaseReference storeUser;
+    private DatabaseReference reference;
     private FirebaseAuth mAuth;
-    private String currentUserid;
+    private PrivateChatAdapter chatAdapter;
+    private List<ChatMessage> messageList;
+    private String userID;
+    private String mes;
+    private String currentUserid1;
+    private String currentUserid2;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,32 +72,45 @@ public class MessageActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        final Messagess messagess = new Messagess();
-
-        Bundle intent = getIntent().getExtras();
-//        final String id = intent.getString("id");
-        final String ClintID = intent.getString("userID");
-//        Toast.makeText(this, ClintID, Toast.LENGTH_LONG).show();
-        final AllUsers users = intent.getParcelable("users");
-        profileName = findViewById(R.id.profile_Name);
-        profileImage = findViewById(R.id.profile_Image);
-        profileLastSeen = findViewById(R.id.profile_LastSeen);
-
-        profileName.setText(users.getUser_name());
-        profileLastSeen.setText(users.getUser_ID());
-        Toast.makeText(this, users.getUser_ID(), Toast.LENGTH_SHORT).show();
-        Picasso.get().load(users.getUser_image()).placeholder(R.drawable.user).into(profileImage);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         mAuth = FirebaseAuth.getInstance();
-        currentUserid = mAuth.getCurrentUser().getUid();
+        final Bundle intent = getIntent().getExtras();
+
+        if (!mAuth.getCurrentUser().getEmail().equals("atef0755@gmail.com")){
+            Toast.makeText(this, mAuth.getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
+            id = intent.getString("id");
+            currentUserid1 = mAuth.getCurrentUser().getUid();
+            ReadMessages(currentUserid1, id);
+
+        }else {
+            Toast.makeText(this, "atef0755@gmail.com", Toast.LENGTH_LONG).show();
+            final AllUsers users = intent.getParcelable("users");
+            userID = users.getUser_ID();
+            currentUserid2 = mAuth.getCurrentUser().getUid();
+            ReadMessages(currentUserid2, userID);
+        }
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mes = messageET.getText().toString().trim();
+                mes = messageET.getText().toString().trim();
                 if (!mes.equals("")){
-                    sendMessage(currentUserid, users.getUser_ID(), mes);
+                    if (!mAuth.getCurrentUser().getEmail().equals("atef0755@gmail.com")){
+                        Toast.makeText(MessageActivity.this, mAuth.getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
+                        id = intent.getString("id");
+                        currentUserid1 = mAuth.getCurrentUser().getUid();
+                        sendMessage(currentUserid1, id, mes);
+                    }else {
+                        Toast.makeText(MessageActivity.this, "atef0755@gmail.com", Toast.LENGTH_LONG).show();
+                        final AllUsers users = intent.getParcelable("users");
+                        userID = users.getUser_ID();
+                        currentUserid2 = mAuth.getCurrentUser().getUid();
+                        sendMessage(currentUserid2, users.getUser_ID(), mes);
+                    }
                 }else {
                     Toast.makeText(MessageActivity.this, "you can not send empty message", Toast.LENGTH_SHORT).show();
                 }
@@ -101,5 +129,35 @@ public class MessageActivity extends AppCompatActivity {
         hashMap.put("message", message);
 
         reference.child("Message").push().setValue(hashMap);
+    }
+
+    private void ReadMessages(final String myID, final String userId){
+        messageList = new ArrayList<>();
+
+        reference = FirebaseDatabase.getInstance().getReference("Message");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                messageList.clear();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    ChatMessage chatMessage = snapshot.getValue(ChatMessage.class);
+
+                    if (chatMessage.getReceiver().equals(myID) && chatMessage.getSender().equals(userId) ||
+                            chatMessage.getReceiver().equals(userId) && chatMessage.getSender().equals(myID)){
+
+                        messageList.add(chatMessage);
+                    }
+
+                    chatAdapter = new PrivateChatAdapter(MessageActivity.this, messageList);
+                    recyclerView.setAdapter(chatAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

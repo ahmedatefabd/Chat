@@ -11,7 +11,7 @@
 
     <include
         android:id="@+id/Chat_Toolbar"
-        layout="@layout/chat_custom_bar"/>
+        layout="@layout/app_bar_layout"/>
 
 
     <android.support.v7.widget.RecyclerView

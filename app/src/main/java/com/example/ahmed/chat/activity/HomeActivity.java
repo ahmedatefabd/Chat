@@ -98,9 +98,9 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(this, AllUsersActivity.class));
                 break;
 
-//            case R.id.Call_Center:
-//                startActivity(new Intent(this, CallCenterActivity.class));
-//                break;
+            case R.id.Call_Center:
+                startActivity(new Intent(this, CallCenterActivity.class));
+                break;
 
         }
         return true;

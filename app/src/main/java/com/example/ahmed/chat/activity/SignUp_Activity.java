@@ -88,7 +88,6 @@ public class SignUp_Activity extends AppCompatActivity {
                                                             finish();
                                                         }else {
                                                             Intent intent = new Intent(SignUp_Activity.this, ClintUserActivity.class);
-                                                            intent.putExtra("userID", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                                             startActivity(intent);
                                                             finish();
                                                         }

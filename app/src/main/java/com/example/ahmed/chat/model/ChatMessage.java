@@ -14,6 +14,14 @@ public class ChatMessage implements Parcelable {
         message = in.readString();
     }
 
+    public ChatMessage(String sender, String receiver, String message) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.message = message;
+    }
+    public ChatMessage() {
+    }
+
     public static final Creator<ChatMessage> CREATOR = new Creator<ChatMessage>() {
         @Override
         public ChatMessage createFromParcel(Parcel in) {

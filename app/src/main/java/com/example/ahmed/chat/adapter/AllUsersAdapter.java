@@ -6,20 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.appizona.yehiahd.fastsave.FastSave;
 import com.example.ahmed.chat.R;
-import com.example.ahmed.chat.activity.AccountSettingsActivity;
 import com.example.ahmed.chat.activity.MessageActivity;
 import com.example.ahmed.chat.model.AllUsers;
-import com.example.ahmed.chat.utils.Constant;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 import butterknife.BindView;
@@ -29,13 +18,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.AllUsersHolder> {
     private Context mcontext;
     private List<AllUsers> allUsersList;
-    private DatabaseReference getDatabaseReference;
-    private FirebaseAuth mAuth;
 
     public AllUsersAdapter(Context context, List<AllUsers> allUsers) {
         this.mcontext = context;
         this.allUsersList = allUsers;
-        mAuth = FirebaseAuth.getInstance();
     }
     @Override
     public AllUsersHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -51,7 +37,6 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.AllUse
         holder.userStatusAllUserTV.setText(users.getUser_status());
         holder.IDUser.setText(users.getUser_ID());
         Picasso.get().load(users.getUser_image()).placeholder(R.drawable.user).into(holder.imageAllUser);
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

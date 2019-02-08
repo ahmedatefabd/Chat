@@ -35,9 +35,15 @@ public class Login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-           Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
-           startActivity(intent);
-           finish();
+           if (FirebaseAuth.getInstance().getCurrentUser().equals("atef0755@gmail.com")){
+               Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
+               startActivity(intent);
+               finish();
+           }else {
+               Intent intent = new Intent(Login_Activity.this, ClintUserActivity.class);
+               startActivity(intent);
+               finish();
+           }
        }
         setContentView(R.layout.activity_login_);
 
@@ -65,16 +71,12 @@ public class Login_Activity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(Login_Activity.this, "Success Login Account", Toast.LENGTH_SHORT).show();
-//                                    Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
-//                                    startActivity(intent);
-//                                    finish();
                                     if (email.equals("atef0755@gmail.com")){
                                         Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
                                         startActivity(intent);
                                         finish();
                                     }else {
                                         Intent intent = new Intent(Login_Activity.this, ClintUserActivity.class);
-                                        intent.putExtra("userID", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                         startActivity(intent);
                                         finish();
                                     }

@@ -13,6 +13,17 @@
         layout="@layout/app_bar_layout"
         />
 
+    <TextView
+        android:id="@+id/userid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sdvvsdvsdvsdvsd"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="18sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"/>
+
     <Button
         android:id="@+id/Call_Center_btn"
         android:layout_width="match_parent"

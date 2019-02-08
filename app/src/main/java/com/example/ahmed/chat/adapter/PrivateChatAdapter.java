@@ -39,11 +39,11 @@ public class PrivateChatAdapter extends RecyclerView.Adapter<PrivateChatAdapter.
     @Override
     public PrivateChatHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == MSG_TYPE_RIGHT) {
-            View row = LayoutInflater.from(context).inflate(R.layout.row_chat_message, parent, false); // row right
+            View row = LayoutInflater.from(context).inflate(R.layout.chat_item_right, parent, false);
             PrivateChatHolder holder = new PrivateChatHolder(row);
             return holder;
         }else {
-            View row = LayoutInflater.from(context).inflate(R.layout.row_chat_message, parent, false); // row left
+            View row = LayoutInflater.from(context).inflate(R.layout.chat_item_left, parent, false);
             PrivateChatHolder holder = new PrivateChatHolder(row);
             return holder;
         }
@@ -53,6 +53,8 @@ public class PrivateChatAdapter extends RecyclerView.Adapter<PrivateChatAdapter.
     public void onBindViewHolder(PrivateChatHolder holder, int position) {
 
         ChatMessage chatMessage = chatMessageList.get(position);
+
+        holder.showMessage.setText(chatMessage.getMessage());
     }
 
     @Override
@@ -62,8 +64,12 @@ public class PrivateChatAdapter extends RecyclerView.Adapter<PrivateChatAdapter.
 
     public class PrivateChatHolder extends RecyclerView.ViewHolder {
 
+        public TextView showMessage;
+
         public PrivateChatHolder(View itemView) {
             super(itemView);
+
+            showMessage = itemView.findViewById(R.id.show_message);
         }
     }
 
