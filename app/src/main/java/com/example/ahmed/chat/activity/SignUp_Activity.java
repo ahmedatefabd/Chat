@@ -1,5 +1,4 @@
 package com.example.ahmed.chat.activity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,12 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.ahmed.chat.R;
 import com.example.ahmed.chat.model.AllUsers;
 import com.example.ahmed.chat.model.Chat_Call_Center;
 import com.example.ahmed.chat.model.ClintData;
-import com.example.ahmed.chat.model.Message;
 import com.example.ahmed.chat.utils.Constant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,7 +22,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -40,7 +36,6 @@ public class SignUp_Activity extends AppCompatActivity {
     EditText name;
     private Toolbar toolbar;
     public Chat_Call_Center call_center;
-
     private DatabaseReference storeUser;
     private DatabaseReference callCenterReference;
     private FirebaseAuth mAuth;

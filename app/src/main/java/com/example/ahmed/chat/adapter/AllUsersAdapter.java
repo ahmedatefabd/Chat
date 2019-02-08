@@ -23,6 +23,7 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.AllUse
         this.mcontext = context;
         this.allUsersList = allUsers;
     }
+
     @Override
     public AllUsersHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View row = LayoutInflater.from(mcontext).inflate(R.layout.all_users_display_layout, parent, false);

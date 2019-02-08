@@ -10,12 +10,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.example.ahmed.chat.R;
 import com.example.ahmed.chat.fragment.AllUsersFragment;
 import com.example.ahmed.chat.fragment.CHATS;
 import com.google.firebase.auth.FirebaseAuth;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,13 +27,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        ControlView();
+    }
+
+    private void ControlView() {
         toolbar = findViewById(R.id.Home_Toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Home");
-
         viewPager = findViewById(R.id.viewpager);
         setupViewPager(viewPager);
-
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -75,11 +75,13 @@ public class HomeActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -93,15 +95,6 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.Account_Settings:
                 startActivity(new Intent(this, AccountSettingsActivity.class));
                 break;
-
-            case R.id.All_Users:
-                startActivity(new Intent(this, AllUsersActivity.class));
-                break;
-
-            case R.id.Call_Center:
-                startActivity(new Intent(this, CallCenterActivity.class));
-                break;
-
         }
         return true;
     }

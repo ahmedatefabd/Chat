@@ -22,13 +22,10 @@ public class AllUsersFragment extends Fragment {
     private List<AllUsers> allUsersArrayList;
 
     public AllUsersFragment() {
-        // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_requests, container, false);
         recycler = view.findViewById(R.id.recyclerUser);
         ReturnData();

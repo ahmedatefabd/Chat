@@ -47,9 +47,6 @@
         <activity
             android:name=".activity.MessageActivity"
             android:parentActivityName=".activity.AllUsersActivity" />
-        <activity
-            android:name=".activity.CallCenterActivity"
-            android:parentActivityName=".activity.ClintUserActivity" />
 
         <activity android:name=".activity.ClintUserActivity"/>
     </application>
