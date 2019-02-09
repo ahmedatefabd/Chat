@@ -35,8 +35,7 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.AllUse
     public void onBindViewHolder(final AllUsersHolder holder, int position) {
         final AllUsers users = allUsersList.get(position);
         holder.usernameAllUserTV.setText(users.getUser_name());
-        holder.userStatusAllUserTV.setText(users.getUser_status());
-        holder.IDUser.setText(users.getUser_ID());
+//        holder.userStatusAllUserTV.setText(users.getUser_status());
         Picasso.get().load(users.getUser_image()).placeholder(R.drawable.user).into(holder.imageAllUser);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,10 +57,8 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.AllUse
         CircleImageView imageAllUser;
         @BindView(R.id.username_AllUser_TV)
         TextView usernameAllUserTV;
-        @BindView(R.id.userStatus_AllUser_TV)
-        TextView userStatusAllUserTV;
-        @BindView(R.id.IDUser_TV)
-        TextView IDUser;
+//        @BindView(R.id.userStatus_AllUser_TV)
+//        TextView userStatusAllUserTV;
 
         public AllUsersHolder(View itemView) {
             super(itemView);
